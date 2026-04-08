@@ -1,6 +1,7 @@
 // == Selectors ==
+const whisperForm = document.getElementById('whisper-form')
+const whisperMessage = document.getElementById('whisper-message')
 const whispers = document.getElementById('whispers')
-const whisperCreateButton = document.getElementById('whisper-create')
 
 // == Event Listeners ==
 whispers.addEventListener('click', event => {
@@ -15,11 +16,16 @@ whispers.addEventListener('click', event => {
     }
 })
 
-whisperCreateButton.addEventListener('click', event => {
-    const message = prompt("What's your whisper?")
+whisperForm.addEventListener('submit', event => {
+    event.preventDefault()
+    const message = whisperMessage.value.trim()
     if(message) {
         createWhisper(message)
         .then(refreshAllUI)
+        .then(() => {
+            whisperForm.reset()
+            whisperMessage.focus()
+        })
     }
 })
 

@@ -16,7 +16,11 @@
         </ul>
     </nav>
     <main>
-        <button type="button" class="block" id="whisper-create">Spread a whisper 🤭</button>
+        <form id="whisper-form" class="composer">
+            <label for="whisper-message">Spread a whisper</label>
+            <textarea id="whisper-message" name="message" rows="4" placeholder="Type your whisper here..." required></textarea>
+            <button type="submit" class="block">Share whisper</button>
+        </form>
         <div id="whispers"></div>
     </main>
     <script src="app.js"></script>
